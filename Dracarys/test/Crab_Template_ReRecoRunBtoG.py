@@ -7,12 +7,12 @@ config = Configuration()
 config.section_("General")
 config.General.requestName = 'TASK'
 config.General.workArea = 'crab_projects'
-config.General.transferOutputs = True
-config.General.transferLogs = True
+config.General.transferOutputs = False
+config.General.transferLogs = False
 
 config.section_("JobType")
 config.JobType.pluginName = 'Analysis'
-config.JobType.psetName = 'ConfFile_data_cfg.py'
+config.JobType.psetName = 'CMSCONFIG'
 #config.JobType.maxMemoryMB = 2500
 config.JobType.allowUndistributedCMSSW = True
 
@@ -32,7 +32,7 @@ config.Data.splitting = 'LumiBased'
 config.Data.unitsPerJob = 50
 config.Data.lumiMask = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt'
 #config.Data.outLFNDirBase = '/store/user/%s/' % (getUsernameFromSiteDB())
-config.Data.outLFNDirBase = '/store/user/nvanegas/VLF_ANA/OUTPUTDIR/'
+config.Data.outLFNDirBase = '/store/user/OUTPUTDIR/'
 config.Data.publication = False
 config.Data.outputDatasetTag = 'TASK'
 
