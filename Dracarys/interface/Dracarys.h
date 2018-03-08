@@ -24,6 +24,13 @@
 #include "DataFormats/PatCandidates/interface/MET.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
 
+#include "DataFormats/HepMCCandidate/interface/GenParticle.h"
+#include "DataFormats/JetReco/interface/GenJetCollection.h"
+#include "DataFormats/JetReco/interface/GenJet.h"
+#include "DataFormats/METReco/interface/GenMET.h"
+#include "DataFormats/METReco/interface/GenMETCollection.h"
+#include "SimDataFormats/GeneratorProducts/interface/GenEventInfoProduct.h"
+
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
 #include "TTree.h"
@@ -71,7 +78,9 @@ class Dracarys : public edm::one::EDAnalyzer<edm::one::SharedResources>  {
   edm::EDGetTokenT<edm::View<pat::Jet> > tok_jets_;
   edm::EDGetTokenT<pat::METCollection> tok_met_;
   edm::EDGetTokenT<edm::View<pat::Muon> > tok_muons_;
- 
+  /*Gen Info*/
+  edm::EDGetTokenT<reco::GenParticleCollection> genToken_;
+
   /// histograms
   //  std::map<std::string,TH1F*> histContainer_;
   //Counters
@@ -129,6 +138,11 @@ class Dracarys : public edm::one::EDAnalyzer<edm::one::SharedResources>  {
   double MT_LeadingMuon_MET;
   int NMuons;
   int NJets, NbJets;
+  
+  //Gen Info
+  vector <double> Gen_pt, Gen_eta, Gen_phi, Gen_status, Gen_pdg_id, Gen_motherpdg_id;
+  vector <double> Gen_energy, Gen_vx, Gen_vy, Gen_vz; 
+  vector <double> Gen_charge, Gen_numDaught, Gen_numMother;
 
   };
 #endif
